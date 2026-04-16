@@ -73,44 +73,82 @@
 .sort-group {
   display: flex;
   align-items: center;
-  gap: 2px;
+  gap: 4px;
+  background: var(--bg);
+  padding: 4px;
+  border-radius: 10px;
+  flex-wrap: nowrap;
 }
 
 .sort-label {
-  font-size: 12px;
+  font-size: 11px;
   color: var(--text-muted);
-  margin-right: 6px;
-  font-weight: 500;
+  margin-right: 4px;
+  font-weight: 600;
+  white-space: nowrap;
 }
 
 .sort-btn {
-  padding: 5px 10px;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 6px 10px;
   font-size: 12px;
   font-weight: 500;
-  color: var(--text-muted);
+  color: var(--text-secondary);
   background: transparent;
-  border: 1px solid transparent;
-  border-radius: 6px;
+  border: none;
+  border-radius: 7px;
   cursor: pointer;
   transition: all 0.2s ease;
   font-family: var(--font-sans);
+  white-space: nowrap;
 }
 
 .sort-btn:hover {
   color: var(--accent);
-  background: var(--accent-light);
+  background: var(--surface);
 }
 
 .sort-btn.active {
   color: var(--accent);
-  border-color: var(--accent);
-  background: var(--accent-light);
+  background: var(--surface);
   font-weight: 600;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
 }
 
 .sort-dir {
-  font-size: 11px;
+  font-size: 10px;
   font-weight: 700;
+  transition: transform 0.2s ease;
+  display: inline-block;
+}
+
+.sort-btn.active .sort-dir {
+  color: var(--accent);
+}
+
+/* 添加排序方向动画效果 */
+@keyframes sort-bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-2px); }
+}
+
+.sort-btn.active .sort-dir {
+  animation: sort-bounce 0.5s ease-in-out;
+}
+
+/* 确保排序按钮组在小屏幕上也能正常显示 */
+@media (max-width: 768px) {
+  .sort-group {
+    flex-wrap: wrap;
+    gap: 4px;
+  }
+  
+  .sort-btn {
+    padding: 4px 8px;
+    font-size: 11px;
+  }
 }
 
 /* === Empty State === */
