@@ -1,6 +1,7 @@
 import { useState, useMemo } from 'react'
 import type { NodeTraffic } from '../types'
 import { formatBytes, formatBytesShort, formatDateFull, formatSpeed } from '../utils'
+import './NodeTable.css'
 
 type SortField = 'name' | 'upload' | 'download' | 'total' | 'online'
 type SortDir = 'asc' | 'desc'
