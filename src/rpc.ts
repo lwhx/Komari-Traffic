@@ -12,8 +12,7 @@ export async function rpcCall<T>(method: string, params?: Record<string, unknown
     request.params = params
   }
 
-  const apiUrl = import.meta.env.VITE_KOMARI_URL || ''
-  const response = await fetch(`${apiUrl}/api/rpc2`, {
+  const response = await fetch('/api/rpc2', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     credentials: 'include',
